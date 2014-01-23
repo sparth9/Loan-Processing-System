@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deploy xmlns="http://www.apache.org/ode/schemas/dd/2007/03" xmlns:loanprocessing.bpel.tps="http://loanprocessing.bpel.tps" xmlns:webservices="http://webservices">
+  <process name="loanprocessing.bpel.tps:LoanProcessing">
+    <active>true</active>
+    <retired>false</retired>
+    <process-events generate="all"/>
+    <provide partnerLink="client">
+      <service name="loanprocessing.bpel.tps:LoanProcessingService" port="LoanProcessingPort"/>
+    </provide>
+    <invoke partnerLink="VerificationPL">
+      <service name="webservices:VerificationServiceService" port="VerificationService"/>
+    </invoke>
+    <invoke partnerLink="CreditCheckPL">
+      <service name="webservices:CreditCheckServiceService" port="CreditCheckService"/>
+    </invoke>
+    <invoke partnerLink="EmploymentCheckPL">
+      <service name="webservices:EmploymentCheckServiceService" port="EmploymentCheckService"/>
+    </invoke>
+  </process>
+</deploy>

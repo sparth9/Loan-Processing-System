@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservices" xmlns:intf="http://webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservices" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="checkVerification">
+    <complexType>
+     <sequence>
+      <element name="ssn" type="xsd:int"/>
+      <element name="phoneNumber" type="xsd:int"/>
+      <element name="salary" type="xsd:int"/>
+      <element name="loanAmount" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkVerificationResponse">
+    <complexType>
+     <sequence>
+      <element name="checkVerificationReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="checkVerificationRequest">
+
+      <wsdl:part element="impl:checkVerification" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkVerificationResponse">
+
+      <wsdl:part element="impl:checkVerificationResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="VerificationService">
+
+      <wsdl:operation name="checkVerification">
+
+         <wsdl:input message="impl:checkVerificationRequest" name="checkVerificationRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:checkVerificationResponse" name="checkVerificationResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="VerificationServiceSoapBinding" type="impl:VerificationService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="checkVerification">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkVerificationRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkVerificationResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="VerificationServiceService">
+
+      <wsdl:port binding="impl:VerificationServiceSoapBinding" name="VerificationService">
+
+         <wsdlsoap:address location="http://localhost:9090/SimpleSOAPExample/services/VerificationService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

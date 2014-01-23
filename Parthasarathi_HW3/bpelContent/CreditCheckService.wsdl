@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservices" xmlns:intf="http://webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservices" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="checkCredit">
+    <complexType>
+     <sequence>
+      <element name="ssn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkCreditResponse">
+    <complexType>
+     <sequence>
+      <element name="checkCreditReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="checkCreditRequest">
+
+      <wsdl:part element="impl:checkCredit" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkCreditResponse">
+
+      <wsdl:part element="impl:checkCreditResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CreditCheckService">
+
+      <wsdl:operation name="checkCredit">
+
+         <wsdl:input message="impl:checkCreditRequest" name="checkCreditRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:checkCreditResponse" name="checkCreditResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CreditCheckServiceSoapBinding" type="impl:CreditCheckService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="checkCredit">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkCreditRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkCreditResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CreditCheckServiceService">
+
+      <wsdl:port binding="impl:CreditCheckServiceSoapBinding" name="CreditCheckService">
+
+         <wsdlsoap:address location="http://localhost:9090/SimpleSOAPExample/services/CreditCheckService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

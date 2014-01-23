@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from VerificationServiceService WSDL service -->
+
+  <service name="VerificationService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservices.sai"/>
+      <parameter name="wsdlServiceElement" value="VerificationServiceService"/>
+      <parameter name="schemaQualified" value="http://webservices.sai"/>
+      <parameter name="wsdlServicePort" value="VerificationService"/>
+      <parameter name="className" value="sai.webservices.VerificationService"/>
+      <parameter name="wsdlPortType" value="VerificationService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://webservices.sai" xmlns:retNS="http://webservices.sai" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="verifyApplicant" qname="operNS:verifyApplicant" returnQName="retNS:verifyApplicantReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webservices.sai" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:ssn" type="tns:int"/>
+        <parameter xmlns:pns="http://webservices.sai" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://webservices.sai" xmlns:retNS="http://webservices.sai" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="verifyApplicantDetails" qname="operNS:verifyApplicantDetails" returnQName="retNS:verifyApplicantDetailsReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://webservices.sai" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:ssn" type="tns:int"/>
+        <parameter xmlns:pns="http://webservices.sai" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:name" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="verifyApplicant verifyApplicantDetails"/>
+
+  </service>
+</deployment>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservices" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservices" xmlns:intf="http://webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservices" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="checkEmployment">
+    <complexType>
+     <sequence>
+      <element name="ssn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="checkEmploymentResponse">
+    <complexType>
+     <sequence>
+      <element name="checkEmploymentReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="checkEmploymentResponse">
+
+      <wsdl:part element="impl:checkEmploymentResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="checkEmploymentRequest">
+
+      <wsdl:part element="impl:checkEmployment" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="EmploymentCheckService">
+
+      <wsdl:operation name="checkEmployment">
+
+         <wsdl:input message="impl:checkEmploymentRequest" name="checkEmploymentRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:checkEmploymentResponse" name="checkEmploymentResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="EmploymentCheckServiceSoapBinding" type="impl:EmploymentCheckService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="checkEmployment">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="checkEmploymentRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="checkEmploymentResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="EmploymentCheckServiceService">
+
+      <wsdl:port binding="impl:EmploymentCheckServiceSoapBinding" name="EmploymentCheckService">
+
+         <wsdlsoap:address location="http://localhost:9090/SimpleSOAPExample/services/EmploymentCheckService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
